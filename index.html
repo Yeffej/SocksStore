@@ -2,18 +2,52 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Vue Mastery</title>
+    <title>Vue Mastery::Yeffej</title>
     <!-- Import Styles -->
     <link rel="stylesheet" href="./assets/styles.css" />
     <!-- Import Vue.js -->
-    <script src="https://unpkg.com/vue@3.0.0-beta.12/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
   </head>
   <body>
     <div id="app">
-      <h1>Product goes here</h1>
+      <header class="nav-bar"></header>
+      <section class="product-display">
+        <div class="cart">Cart items: {{CartCounter}}</div>
+        <section class="product-container">
+          <figure class="product-image">
+            <img v-if="details.color == Colors.Blue" v-bind:src="imgSources[0]" alt="BlueSock">
+            <img v-else v-bind:src="imgSources[1]" alt="GreenSock">
+          </figure>
+          <div class="product-info">
+            <h1>{{product}}</h1>
+            <p>{{description}}</p>
+            <ul>
+              <li v-for="componet in details.Composition" :key="componet.id">{{componet.value}}</li>
+            </ul>
+            <!-- COLORS SELECTOR CONTAINER -->
+            <section>
+              <div v-for="variant in Variants" :key="variant.id" 
+                @mouseover="updateImage(variant.name, variant.BtStyle)" 
+                class="color-circle" :style="{ backgroundColor: variant.name }">
+              </div>
+            </section>
+            <!-- END -->
+
+            <button :style="ExtraStyles.button" v-on:click="handleToggleBTClick" 
+            class="button">Add To Cart</button>
+            <button :style="ExtraStyles.button" 
+            v-on:click="()=> handleToggleBTClick(false)" class="button">
+              Remove To Cart</button>
+          </div>              
+        </section>
+      </section>
     </div>
 
-    <!-- Import Js -->
+
+    <!-- Import Vue App -->
+    <script src="./src/app.js"></script>
+
+    <!-- Import main Js -->
     <script src="./main.js"></script>
   </body>
 </html>
