@@ -6,52 +6,29 @@ const app  = Vue.createApp({
     data() {
         return {
             Colors: Colors,
-            product: "Socks",
-            description: "Programmer´s socks | Soft and Comfortable \n"
-            + "Socks programers Feet Socks for every programer Flats Foot Cover Sock",
-            imgSources: [
-                "../assets/images/socks_blue.jpg",
-                "../assets/images/socks_green.jpg",
-            ],
-            details: {
-                color: Colors.Blue, 
-                inStock: true,
-                Composition: [ { id: 0, value: '50% cotton'},
-                 { id: 1, value: '30% wool'},{ id: 2, value: '20% polyester'}],               
-            },
-            links: "",
-            CartCounter: 0,
-            Variants: [
-                {id: 1201, name: "blue", BtStyle: {
-                    background: "#39495c",
-                } }, 
-                {id: 1202, name: "green", BtStyle: {
-                    background: "#3aa770", 
-                }}
-            ],
-            ExtraStyles: {
-                button: "",
-            }
-                
+            Cart: [],
+            links: "",                        
         }
-    },
+    },   
+   
     methods: {
-        handleToggleBTClick(isAdding = true) {
+        handleToggleCart(isAdding, Variants, Color) {
             if(isAdding) {
-                this.CartCounter++;
+                const item = {
+                    id: this.Cart.length,
+                    Type: `${this.product} ${Variants[Color].name}`
+                }
+                Variants[Color].Sold.push(item.id)
+                this.Cart.push(item);
+                Variants[Color].quantity--;
                 return;
             }
-            this.CartCounter--;
-        },
-        updateImage(imgRef, BtStyle) {
-            switch (imgRef) {
-                case "green": 
-                    this.details.color = Colors.Green
-                    break;
-                default:
-                    this.details.color = Colors.Blue
-            }
-            this.ExtraStyles.button = `background-color: ${BtStyle.background}`
+           const index = Variants[Color].Sold.length - 1
+            if(index === -1)
+                return;
+            this.Cart.splice(index, 1)
+            Variants[Color].Sold.pop()
+            Variants[Color].quantity++;
         }
     }
 

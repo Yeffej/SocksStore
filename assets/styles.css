@@ -89,12 +89,15 @@ ul {
   outline: none;
   cursor: pointer;
   transition: 200ms transform;
+  will-change: background-color;
 }
 .button:active {
   transform: scale(0.8);
 }
 
 .cart {
+  position: sticky;
+  top: 15px;
   margin: 15px 10px 15px auto;
   float: right;
   border: 1px solid #d8d8d8;
@@ -116,7 +119,7 @@ ul {
 
 
 .disabledButton {
-  background-color: #d8d8d8;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
@@ -129,7 +132,7 @@ ul {
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.57);
 }
 
-.out-of-stock-img {
+.outOfStockImg {
   opacity:0.5
 }
 
