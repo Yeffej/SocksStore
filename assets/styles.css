@@ -179,11 +179,23 @@ ul {
 
 .review-container li {
   margin-bottom: 30px;
+  border-bottom: 1px solid;
+}
+
+.review-container h4 strong {
+  color: #dfcf30;
+}
+
+.review-container p {
+  font-style: italic;
 }
 
 .review-form .button {
   display: block;
   margin: 30px auto;
+}
+.review-form select {
+  margin-bottom: 15px;
 }
 
 

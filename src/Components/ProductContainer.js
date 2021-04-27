@@ -36,7 +36,12 @@ app.component("product-container", {
             :disabled="availableRemove" 
             :class="{disabledButton:  availableRemove}">
               Remove To Cart</button>
-          </div>              
+          </div>
+          
+          <review-component v-if="Reviews.length > 0" :reviews="Reviews">
+          </review-component>
+          <review-form v-on:form-submit="addReview" :btStyle="ExtraStyles.button">
+          </review-form>
     </section>
     `,
     
@@ -66,7 +71,8 @@ app.component("product-container", {
             ],
             ExtraStyles: {
                 button: "",
-            },            
+            },
+            Reviews: [],          
                 
         }
     },
@@ -83,7 +89,11 @@ app.component("product-container", {
                     this.details.color = Colors.Blue
             }
             this.ExtraStyles.button = `background-color: ${BtStyle.background}`
+        },
+        addReview(review) {
+            this.Reviews.push(review);
         }
+
     },
     computed: {
         title() {
