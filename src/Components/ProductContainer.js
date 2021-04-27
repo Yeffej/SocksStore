@@ -53,8 +53,8 @@ app.component("product-container", {
             description: "Programmer´s socks | Soft and Comfortable \n"
             + "Socks programers Feet Socks for every programer Flats Foot Cover Sock",
             imgSources: [
-                "../assets/images/socks_blue.jpg",
-                "../assets/images/socks_green.jpg",
+                "./assets/images/socks_blue.jpg",
+                "./assets/images/socks_green.jpg",
             ],
             details: {
                 color: Colors.Blue, 
