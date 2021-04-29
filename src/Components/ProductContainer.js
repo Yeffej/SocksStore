@@ -7,8 +7,8 @@ app.component("product-container", {
      `
     <section class="product-container">
           <figure :class="{outOfStockImg: !inStock}" class="product-image">
-            <img v-if="details.color == Colors.Blue" v-bind:src="imgSources[0]" alt="BlueSock">
-            <img v-else v-bind:src="imgSources[1]" alt="GreenSock">
+            <img v-show="details.color == Colors.Blue" v-bind:src="imgSources[0]" alt="BlueSock">
+            <img v-show="details.color == Colors.Green" v-bind:src="imgSources[1]" alt="GreenSock">
           </figure>
           <div class="product-info">
             <h1>{{title}}</h1>
